@@ -4,7 +4,7 @@
 	{
 		static private $loaded = array();
 
-		public function __callStatic($method, $args)
+		static public function __callStatic($method, $args)
 		{
 			$class = __NAMESPACE__ . '\\' . $method;
 
