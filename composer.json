@@ -2,18 +2,33 @@
 	"name": "dotink/inkwell-html",
 	"description": "HTML Helpers",
 	"keywords": ["html", "templating"],
-	"license": "AGPL 3.0",
+	"license": "AGPL-3.0",
+	"type": "opus-package",
 	"authors": [
 		{
 			"name": "Matthew J. Sahagian",
-			"email": "matt@imarc.net",
-			"role": "Developer"
+			"email": "msahagian@dotink.org",
+			"role": "Lead Architect / Developer"
+		}
+	],
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "http://packages.dotink.org"
 		}
 	],
 	"require": {
-		"php": ">=5.4.0"
+		"php": ">=5.4.0",
+		"imarc/opus": "dev-master"
 	},
 	"autoload": {
 		"classmap": ["src/"]
+	},
+	"extra": {
+		"opus": {
+			"inkwell/framework": {
+				"plugin" : ""
+			}
+		}
 	}
 }

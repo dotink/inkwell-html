@@ -1,4 +1,2 @@
-Project Name
+HTML helper for inside templates
 ============
-
-A description of the project goes here
