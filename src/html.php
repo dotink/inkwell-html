@@ -21,9 +21,9 @@
 		{
 			$class = __NAMESPACE__ . '\\' . $method;
 
-			self::$loaded[$method] = new $class();
+			static::$loaded[$method] = new $class();
 
-			return call_user_func_array(self::$loaded[$method], $args);
+			return call_user_func_array(static::$loaded[$method], $args);
 		}
 
 
@@ -32,11 +32,11 @@
 		 */
 		static public function out($data)
 		{
-			if (!self::$filters) {
-				return html::esc($data);
+			if (!static::$filters) {
+				return static::esc($data);
 			}
 
-			foreach (self::$filters as $filter) {
+			foreach (static::$filters as $filter) {
 				$data = $filter($data);
 			}
 
@@ -49,25 +49,29 @@
 		 */
 		static public function clear()
 		{
-			self::$filters = array();
+			static::$filters = array();
 		}
 
 
 		/**
 		 *
 		 */
-		static public function filter($filters, $callback = NULL)
+		static public function filter($filters, $data = NULL)
 		{
 			settype($filters, 'array');
 
 			foreach ($filters as $filter) {
-				self::$filters[] = [__CLASS__, $filter];
+				static::$filters[] = [__CLASS__, $filter];
 			}
 
-			if (is_callable($callback)) {
-				$callback();
-				self::clear();
+			if (is_callable($data)) {
+				$data = $data();
+			} else {
+				$data = static::out($data);
 			}
+
+			static::clear();
+			return $data;
 		}
 	}
 }
