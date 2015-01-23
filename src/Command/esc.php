@@ -4,7 +4,9 @@
 	{
 		public function __invoke($data)
 		{
-			return htmlentities($data, ENT_HTML5);
+			return is_string($data)
+				? htmlentities($data, ENT_HTML5)
+				: $data;
 		}
 	}
 }

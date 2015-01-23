@@ -4,8 +4,12 @@
 	{
 		public function __invoke($data, $callback)
 		{
+			$data = $data ?: array();
+
+			settype($data, 'array');
+
 			foreach ($data as $i => $value) {
-				$callback($i, $value);
+				$callback(html::out($i), html::out($value));
 			}
 		}
 	}
