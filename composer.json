@@ -27,6 +27,8 @@
 	"extra": {
 		"opus": {
 			"inkwell/framework": {
+				"plugin/config" : "config",
+				"plugin/include" : "include"
 			}
 		}
 	}
