@@ -7,7 +7,7 @@
 		public function __invoke($data)
 		{
 			if ($data instanceof Closure) {
-				return html::filter(__FUNCTION__, $data);
+				return html::filter('raw', $data);
 			}
 
 			return is_string($data)
