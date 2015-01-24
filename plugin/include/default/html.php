@@ -6,8 +6,8 @@
 
 		HTML\html::add([
 			'money' => new HTML\money(
-				$app['engine']->fetch('html', 'money.currency', '$'),
-				$app['engine']->fetch('html', 'money.decimal',  '.'),
+				$app['engine']->fetch('html', 'money.currency',  '$'),
+				$app['engine']->fetch('html', 'money.decimal',   '.'),
 				$app['engine']->fetch('html', 'money.separator', ',')
 			)
 		]);

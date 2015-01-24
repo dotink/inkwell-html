@@ -2,8 +2,8 @@
 
 	return Affinity\Config::create([
 		'money' => [
-				'currency'  => '$',
-				'decimal'   => '.',
-				'separator' => ','
+			'currency'  => '$',
+			'decimal'   => '.',
+			'separator' => ','
 		]
 	]);
