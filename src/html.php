@@ -21,9 +21,20 @@
 		{
 			$class = __NAMESPACE__ . '\\' . $method;
 
-			static::$loaded[$method] = new $class();
+			if (!isset(static::$loaded[$method])) {
+				static::$loaded[$method] = new $class();
+			}
 
 			return call_user_func_array(static::$loaded[$method], $args);
+		}
+
+
+		/**
+		 *
+		 */
+		static public function add($filters)
+		{
+			static::$loaded = array_merge(static::$loaded, $filters);
 		}
 
 
