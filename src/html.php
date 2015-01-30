@@ -41,13 +41,17 @@
 		/**
 		 *
 		 */
-		static public function out($data)
+		static public function out($data, $skip = NULL)
 		{
-			if (!static::$filters) {
-				return static::esc($data);
-			}
+			$filters = !static::$filters
+				? ['esc' => [__CLASS__, 'esc']]
+				: static::$filters;
 
-			foreach (static::$filters as $filter) {
+			foreach ($filters as $name => $filter) {
+				if ($name == $skip) {
+					continue;
+				}
+
 				$data = $filter($data);
 			}
 
