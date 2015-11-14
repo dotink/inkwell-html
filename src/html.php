@@ -41,14 +41,16 @@
 		/**
 		 *
 		 */
-		static public function out($data, $skip = NULL)
+		static public function out($data, $skip = array())
 		{
+			settype($skip, 'array');
+
 			$filters = !static::$filters
 				? ['esc' => [__CLASS__, 'esc']]
 				: static::$filters;
 
 			foreach ($filters as $name => $filter) {
-				if ($name == $skip) {
+				if (in_array($name, $skip)) {
 					continue;
 				}
 

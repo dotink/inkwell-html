@@ -11,7 +11,7 @@
 			}
 
 			return is_string($data)
-				? html::out(html_entity_decode($data, ENT_HTML5), 'raw')
+				? html::out(html_entity_decode($data, ENT_HTML5), ['raw', 'esc'])
 				: $data;
 		}
 	}
